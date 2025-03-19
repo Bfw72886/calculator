@@ -1,6 +1,9 @@
 let inputNum;
 let inputNum2;
 let inputOperator;
+let displayMaxLength = 11;
+
+const display = document.querySelector("#display");
 
 function add(num, num2) {return num + num2}
 
@@ -24,4 +27,15 @@ function operate(num, operator, num2) {
             console.log("Something went wrong in operate(num, operator, num2)");
             break;
     }
+}
+
+function showOnDisplay(value) {
+    if (display.textContent.length < displayMaxLength) {
+        console.log(display.textContent.length);
+        display.append(value);
+    }
+}
+
+function clearDisplay() {
+    display.textContent = '';
 }
