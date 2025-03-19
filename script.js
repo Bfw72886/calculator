@@ -4,6 +4,7 @@ let inputOperator;
 let displayMaxLength = 11;
 
 const display = document.querySelector("#display");
+const calcKeys = document.querySelector("#calcKeys");
 
 function add(num, num2) {return num + num2}
 
@@ -29,9 +30,8 @@ function operate(num, operator, num2) {
     }
 }
 
-function showOnDisplay(value) {
+function appendOnDisplay(value) {
     if (display.textContent.length < displayMaxLength) {
-        console.log(display.textContent.length);
         display.append(value);
     }
 }
@@ -39,3 +39,28 @@ function showOnDisplay(value) {
 function clearDisplay() {
     display.textContent = '';
 }
+
+calcKeys.addEventListener("click", (event) => {
+
+    const keyClicked = event.target.id;
+
+    switch (keyClicked) {
+        case "0":
+        case "1":
+        case "2":
+        case "3":
+        case "4":
+        case "5":
+        case "6":
+        case "7":
+        case "8":
+        case "9":
+            appendOnDisplay(keyClicked);
+            break;
+        case "C":
+            clearDisplay();
+            break;
+        default:
+            break;
+    }
+})
