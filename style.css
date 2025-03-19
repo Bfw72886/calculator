@@ -1,3 +1,14 @@
+:root {
+    /* 
+    https://www.pastelcolorpalettes.com/pastel-purple-pink-blue
+    */
+    --first: #C8B3E1;
+    --second: #F6D0DE;
+    --third: #F6EDDA;
+    --fourth: #CBE6EE;
+    --fifth: #B2D0EB;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -15,5 +26,36 @@ body {
 #calculator {
     height: 500px;
     width: 300px;
-    background-color: peachpuff;
+    background-color: var(--second);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#display {
+    width: 90%;
+    height: 20%;
+    border: 5px solid var(--first);
+    margin-bottom: 5%;
+}
+
+#calcKeys {
+    width: 90%;
+    height: 70%;
+    border: 5px solid var(--first);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.calcKey {
+    width: 20%;
+    height: 15%;
+    margin: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--third);
 }
