@@ -1,3 +1,7 @@
+let inputNum;
+let inputNum2;
+let inputOperator;
+
 function add(num, num2) {return num + num2}
 
 function subtract(num, num2) {return num - num2}
