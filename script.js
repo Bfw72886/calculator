@@ -31,13 +31,21 @@ function operate(num, operator, num2) {
 }
 
 function appendOnDisplay(value) {
+    if (display.textContent.length === 1 && display.textContent === "0") {
+        clearDisplay();
+    }
+
     if (display.textContent.length < displayMaxLength) {
         display.append(value);
     }
 }
 
 function clearDisplay() {
-    display.textContent = '';
+    display.textContent = "";
+}
+
+function zeroOnDisplay() {
+    display.textContent = "0";
 }
 
 calcKeys.addEventListener("click", (event) => {
@@ -58,9 +66,11 @@ calcKeys.addEventListener("click", (event) => {
             appendOnDisplay(keyClicked);
             break;
         case "C":
-            clearDisplay();
+            zeroOnDisplay();
             break;
         default:
             break;
     }
 })
+
+zeroOnDisplay();
