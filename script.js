@@ -1,7 +1,8 @@
-let inputNum;
-let inputNum2;
-let inputOperator;
+let inputNumBefore = 0;
+let inputNumCurrent = 0;
+let inputOperator = "+";
 let displayMaxLength = 10;
+let isCalculating = false;
 
 const display = document.querySelector("#display");
 const calcKeys = document.querySelector("#calcKeys");
@@ -64,6 +65,13 @@ function negation() {
     }
 }
 
+function pressOperator(operator = "+") {
+    inputNumBefore = +display.textContent;
+    display.textContent = inputNumBefore;
+    console.log("inputNumBefore: " + inputNumBefore);
+    console.log("inputNumCurrent: " + inputNumCurrent);
+}
+
 calcKeys.addEventListener("click", (event) => {
 
     const keyClicked = event.target.id;
@@ -90,6 +98,11 @@ calcKeys.addEventListener("click", (event) => {
         case "+/-":
             negation();
             break;
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+            pressOperator();
         default:
             break;
     }
