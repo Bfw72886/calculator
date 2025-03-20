@@ -1,7 +1,7 @@
 let inputNum;
 let inputNum2;
 let inputOperator;
-let displayMaxLength = 11;
+let displayMaxLength = 10;
 
 const display = document.querySelector("#display");
 const calcKeys = document.querySelector("#calcKeys");
@@ -48,6 +48,22 @@ function zeroOnDisplay() {
     display.textContent = "0";
 }
 
+function backSpace() {
+    display.textContent = display.textContent.length > 1 ? display.textContent.slice(0, display.textContent.lastIndexOf()) : 0;
+}
+
+function negation() {
+    if (display.textContent === "0") {
+        return;
+    }
+
+    if (display.textContent.charAt(0) != "-") {
+        display.textContent = "-" + display.textContent;
+    } else {
+        display.textContent = display.textContent.slice(1, display.length);
+    }
+}
+
 calcKeys.addEventListener("click", (event) => {
 
     const keyClicked = event.target.id;
@@ -67,6 +83,12 @@ calcKeys.addEventListener("click", (event) => {
             break;
         case "C":
             zeroOnDisplay();
+            break;
+        case "BS":
+            backSpace();
+            break;
+        case "+/-":
+            negation();
             break;
         default:
             break;
