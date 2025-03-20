@@ -9,6 +9,21 @@
     --fourth: #CBE6EE;
     --fifth: #F6D0DE;
     --shadow-color: #c1c1c1;
+    --gradient-first: linear-gradient(135deg,
+    color-mix(in srgb,var(--first), #fff 20%), /* we mix with white for brighter */
+    color-mix(in srgb,var(--first), #999 20%));  /* we mix with black for darker */
+    --gradient-second: linear-gradient(135deg,
+    color-mix(in srgb,var(--second), #fff 20%), /* we mix with white for brighter */
+    color-mix(in srgb,var(--second), #999 20%));  /* we mix with black for darker */
+    --gradient-third: linear-gradient(135deg,
+    color-mix(in srgb,var(--third), #fff 20%), /* we mix with white for brighter */
+    color-mix(in srgb,var(--third), #999 20%));  /* we mix with black for darker */
+    --gradient-fourth: linear-gradient(135deg,
+    color-mix(in srgb,var(--fourth), #fff 20%), /* we mix with white for brighter */
+    color-mix(in srgb,var(--fourth), #999 20%));  /* we mix with black for darker */
+    --gradient-fifth: linear-gradient(135deg,
+    color-mix(in srgb,var(--fifth), #fff 20%), /* we mix with white for brighter */
+    color-mix(in srgb,var(--fifth), #999 20%));  /* we mix with black for darker */
 }
 
 * {
@@ -30,6 +45,7 @@ body {
 #calculator {
     height: 500px;
     width: 300px;
+    background: var(--gradient-second);
     background-color: var(--second);
     display: flex;
     flex-direction: column;
@@ -69,6 +85,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: var(--gradient-third);
     background-color: var(--third);
     user-select: none;
     box-shadow: 4px 4px 5px var(--shadow-color);
@@ -76,14 +93,17 @@ body {
 }
 
 .calcKeyNum {
+    background: var(--gradient-third);
     background-color: var(--third);
 }
 
 .calcKeyOperator {
+    background: var(--gradient-fourth);
     background-color: var(--fourth);
 }
 
 .calcKeyExtra {
+    background: var(--gradient-fifth);
     background-color: var(--fifth);
 }
 
