@@ -1,6 +1,5 @@
-let inputNumBefore = 0;
-let inputNumCurrent = 0;
-let inputOperator = "+";
+let savedNum = 0;
+let savedOperator = "+";
 let displayMaxLength = 10;
 let isCalculating = false;
 
@@ -65,11 +64,13 @@ function negation() {
     }
 }
 
-function pressOperator(operator = "+") {
-    inputNumBefore = +display.textContent;
-    display.textContent = inputNumBefore;
-    console.log("inputNumBefore: " + inputNumBefore);
-    console.log("inputNumCurrent: " + inputNumCurrent);
+function pressOperator(operator) {
+    savedOperator = operator;
+    isCalculating = true;
+}
+
+function equals() {
+    display.textContent = operate(savedNum, savedOperator, +display.textContent);
 }
 
 calcKeys.addEventListener("click", (event) => {
@@ -87,10 +88,18 @@ calcKeys.addEventListener("click", (event) => {
         case "7":
         case "8":
         case "9":
-            appendOnDisplay(keyClicked);
+            if (!isCalculating) {
+                appendOnDisplay(keyClicked);
+            } else {                
+                savedNum = +display.textContent;
+                display.textContent = keyClicked;
+                isCalculating = false;
+            }
             break;
         case "C":
             zeroOnDisplay();
+            savedNum = 0;
+            savedOperator = "+";
             break;
         case "BS":
             backSpace();
@@ -102,7 +111,11 @@ calcKeys.addEventListener("click", (event) => {
         case "-":
         case "*":
         case "/":
-            pressOperator();
+            pressOperator(keyClicked);
+            break;
+        case "=":
+            equals();
+            break;
         default:
             break;
     }
