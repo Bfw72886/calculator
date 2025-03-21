@@ -135,6 +135,7 @@ calcKeys.addEventListener("click", (event) => {
         case "-":
         case "*":
         case "/":
+            equals();
             pressOperator(keyClicked);
             break;
         case "=":
