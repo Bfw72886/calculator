@@ -129,7 +129,7 @@ calcKeys.addEventListener("click", (event) => {
             negation();
             break;
         case ".":
-            display.append(keyClicked);
+            if (!display.textContent.includes(".")) {display.append(keyClicked);}
             break;
         case "+":
         case "-":
