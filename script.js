@@ -98,7 +98,10 @@ function equals() {
 
 calcKeys.addEventListener("click", (event) => {
 
-    const keyClicked = event.target.id;
+    let keyClicked = event.target.id;
+    if(event.detail.keyPressed) {
+        keyClicked = event.detail.keyPressed;
+    }
 
     switch (keyClicked) {
         case "0":
@@ -145,5 +148,11 @@ calcKeys.addEventListener("click", (event) => {
             break;
     }
 })
+
+document.addEventListener("keydown", (event) => {
+    let customEvent = new CustomEvent("click", { bubbles: true, detail: { keyPressed: event.key } });
+    console.log(event.key);
+    calcKeys.dispatchEvent(customEvent);
+});
 
 clear();
