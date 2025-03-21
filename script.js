@@ -72,7 +72,28 @@ function pressOperator(operator) {
 }
 
 function equals() {
-    display.textContent = operate(savedNum, savedOperator, +display.textContent);
+    let result = operate(savedNum, savedOperator, +display.textContent);
+    let currentLength = result.toString().length;
+    let arrayOfNumSplitByDecimal = result.toString().split(".");
+    if (currentLength > displayMaxLength) {
+        let isTooBig = Number.isInteger(result) || arrayOfNumSplitByDecimal[0].toString().length > displayMaxLength;
+        
+        if (isTooBig) {
+            result = "Too big! :c"
+        } else {
+            // round away every decimal too big for screen
+            let decimalsToRoundAway = currentLength - displayMaxLength;
+            arrayOfNumSplitByDecimal[1] = Math.round(+arrayOfNumSplitByDecimal[1] / (Math.pow(10, +decimalsToRoundAway)));
+            result = arrayOfNumSplitByDecimal.join(".");
+        }
+    } 
+
+    result = result.toString();
+    if (result.includes(".")) {
+        result = result.replace(/0+$/g, "");
+        result = result.replace(/\.$/g, "");
+    }
+    display.textContent = result;
 }
 
 calcKeys.addEventListener("click", (event) => {
