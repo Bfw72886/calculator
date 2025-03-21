@@ -44,7 +44,7 @@ function emptyDisplay() {
     display.textContent = "";
 }
 
-function clearFunction() {
+function clear() {
     display.textContent = "0";
 }
 
@@ -97,7 +97,7 @@ calcKeys.addEventListener("click", (event) => {
             }
             break;
         case "C":
-            clearFunction();
+            clear();
             savedNum = 0;
             savedOperator = "+";
             break;
@@ -124,4 +124,4 @@ calcKeys.addEventListener("click", (event) => {
     }
 })
 
-clearFunction();
+clear();
