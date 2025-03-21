@@ -32,7 +32,7 @@ function operate(num, operator, num2) {
 
 function appendOnDisplay(value) {
     if (display.textContent.length === 1 && display.textContent === "0") {
-        clearDisplay();
+        emptyDisplay();
     }
 
     if (display.textContent.length < displayMaxLength) {
@@ -40,11 +40,11 @@ function appendOnDisplay(value) {
     }
 }
 
-function clearDisplay() {
+function emptyDisplay() {
     display.textContent = "";
 }
 
-function zeroOnDisplay() {
+function clearFunction() {
     display.textContent = "0";
 }
 
@@ -97,7 +97,7 @@ calcKeys.addEventListener("click", (event) => {
             }
             break;
         case "C":
-            zeroOnDisplay();
+            clearFunction();
             savedNum = 0;
             savedOperator = "+";
             break;
@@ -124,4 +124,4 @@ calcKeys.addEventListener("click", (event) => {
     }
 })
 
-zeroOnDisplay();
+clearFunction();
