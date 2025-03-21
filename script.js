@@ -1,5 +1,5 @@
-let savedNum = 0;
-let savedOperator = "+";
+let savedNum;
+let savedOperator;
 let displayMaxLength = 10;
 let isCalculating = false;
 
@@ -46,6 +46,8 @@ function emptyDisplay() {
 
 function clear() {
     display.textContent = "0";
+    savedNum = 0;
+    savedOperator = "+";
 }
 
 function backSpace() {
@@ -98,8 +100,6 @@ calcKeys.addEventListener("click", (event) => {
             break;
         case "C":
             clear();
-            savedNum = 0;
-            savedOperator = "+";
             break;
         case "BS":
             backSpace();
