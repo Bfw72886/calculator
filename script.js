@@ -107,6 +107,9 @@ calcKeys.addEventListener("click", (event) => {
         case "+/-":
             negation();
             break;
+        case ".":
+            display.append(keyClicked);
+            break;
         case "+":
         case "-":
         case "*":
