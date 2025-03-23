@@ -5,6 +5,7 @@ let isCalculating = false;
 
 const display = document.querySelector("#display");
 const calcKeys = document.querySelector("#calcKeys");
+const calculator = document.querySelector("#calculator");
 
 function add(num, num2) {return num + num2}
 
@@ -96,6 +97,19 @@ function equals() {
     display.textContent = result;
 }
 
+function questionmark() {
+    let intensity = 5;
+    let i = 0;
+    const interval = setInterval(() => {
+        calculator.style.transform = `translate(${Math.random() * intensity}px, ${Math.random() * intensity}px)`;
+        if (i > 10) {
+            clearInterval(interval);
+            calculator.style.transform = "translate(0, 0)";
+        }
+        i++;
+    }, 50);
+}
+
 calcKeys.addEventListener("click", (event) => {
 
     const keyClicked = event.target.id;
@@ -139,6 +153,9 @@ calcKeys.addEventListener("click", (event) => {
             break;
         case "=":
             equals();
+            break;
+        case "?":
+            questionmark();
             break;
         default:
             break;
